@@ -5,17 +5,25 @@ import MenuItem from '../../types/menu'
 import { COLORS, icons } from '../../Constants'
 import Icon from 'react-native-vector-icons/Entypo'
 import CustomBtn from '../customBtn/customBtn'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '../../store/cartSlice/cartSlice'
+import { RootState } from '../../store/store'
 interface props {
     menuItem: MenuItem
 }
 export default function MenuItemCard({ menuItem }: props) {
     const [countItem, setCountItem] = useState(1);
 
+    const dispatch = useDispatch();
+    const cartItems = useSelector((state: RootState) => state.cart.cartItems);
     const increaseCount = () => {
         setCountItem(prev => prev + 1);
     }
     const decreaseCount = () => {
         if (countItem > 1) setCountItem(prev => prev - 1);
+    }
+    const _addToCart = () => {
+        dispatch(addToCart({ ...menuItem, count: countItem }));
     }
     return (
         <View style={styles.cardContainer}>
@@ -48,7 +56,7 @@ export default function MenuItemCard({ menuItem }: props) {
                 <Text style={styles.caloryTxt}>{menuItem.calories} cals</Text>
             </View>
             <View style={styles.btnWrap}>
-                <CustomBtn width={"50%"} bgColor={COLORS.primary} txtColor={COLORS.white} txt='add to cart'/>
+                <CustomBtn width={"50%"} bgColor={COLORS.primary} txtColor={COLORS.white} txt='add to cart' onPress={_addToCart} />
             </View>
         </View>
     )

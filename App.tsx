@@ -25,7 +25,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { SafeAreaView } from "react-native-safe-area-context"
 import Navigation from './src/navigation';
-
+import { store } from './src/store/store';
+import { Provider } from 'react-redux'
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -64,8 +65,10 @@ function App(): JSX.Element {
   };
 
   return (
-    <View style={{flex : 1}}>
-      <Navigation />
+    <View style={{ flex: 1 }}>
+      <Provider store={store}>
+        <Navigation />
+      </Provider>
     </View>
   );
 }

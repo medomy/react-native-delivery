@@ -3,13 +3,18 @@ import React from 'react'
 import styles from './styles'
 import { COLORS, icons } from '../../Constants'
 import CustomBtn from '../customBtn/customBtn'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/store'
 
 export default function OrderNowComponent() {
+    const { numberOfElements, totalPrice } = useSelector((state: RootState) => {
+        return { numberOfElements: state.cart.numberOfElements, totalPrice: state.cart.totalPrice }
+    });
     return (
         <View style={styles.container}>
             <View style={styles.cartInfoContainer}>
-                <Text style={styles.cartTxt}>n items in cart</Text>
-                <Text style={styles.cartTxt}>$x</Text>
+                <Text style={styles.cartTxt}>{numberOfElements} items in cart</Text>
+                <Text style={styles.cartTxt}>${totalPrice}</Text>
             </View>
             <View style={styles.addressPaymentInfo}>
                 <View style={styles.addressOrPaymentRow}>
