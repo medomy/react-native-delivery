@@ -7,7 +7,7 @@ interface props {
     onPress?: () => void,
     txtColor: string,
     txt: string,
-    bgColor: string
+    bgColor: string,
 }
 export default function CustomBtn({ width, onPress, txtColor, txt, bgColor }: props) {
     return (

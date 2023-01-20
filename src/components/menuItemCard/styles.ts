@@ -3,7 +3,7 @@ import { COLORS, FONTS, SIZES } from "../../Constants";
 
 const styles = StyleSheet.create({
     cardContainer: {
-        padding: SIZES.padding2,
+        padding: SIZES.padding,
         width: "100%",
         alignItems : "center"
     },
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     },
     dishImg: {
         width: "80%",
-        height: 250,
+        height: 200,
         resizeMode: "cover"
     },
     counterContainer: {
@@ -22,10 +22,10 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         borderRadius: SIZES.radius,
         alignItems: "center",
-        padding: SIZES.padding,
+        padding: 8,
         backgroundColor: COLORS.white,
         position: "absolute",
-        bottom: - SIZES.padding,
+        bottom: - 16,
         zIndex: 100,
         shadowColor: "#000",
         shadowOffset: {
@@ -36,14 +36,15 @@ const styles = StyleSheet.create({
         shadowRadius: 6.68,
 
         elevation: 11,
-        width : "40%"
+        width : "50%"
     },
     dishName: {
         ...FONTS.h2,
         fontWeight: "bold",
-        marginTop: SIZES.margin2,
-        marginBottom: 6,
-        color : "black"
+        marginTop: SIZES.margin,
+        marginBottom : 3,
+        color : "black",
+        textAlign : "center"
     },
     dishDescription: {
         ...FONTS.body2,
@@ -62,6 +63,12 @@ const styles = StyleSheet.create({
         width : 25,
         height : 25,
         marginRight : 4
+    },
+    btnWrap : {
+        width : "100%",
+        justifyContent : "center",
+        alignItems : "center",
+        marginVertical : SIZES.margin2
     }
 });
 
