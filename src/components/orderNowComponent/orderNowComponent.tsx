@@ -1,15 +1,41 @@
-import { View, Text, Image, ViewComponent } from 'react-native'
+import { View, Text, Image, ViewComponent, Alert } from 'react-native'
 import React from 'react'
 import styles from './styles'
 import { COLORS, icons } from '../../Constants'
 import CustomBtn from '../customBtn/customBtn'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
+import Restaurant from '../../types/restaurant'
+import { useNavigation } from '@react-navigation/native'
 
-export default function OrderNowComponent() {
+interface props {
+    restaurantId: number
+}
+export default function OrderNowComponent({ restaurantId }: props) {
     const { numberOfElements, totalPrice } = useSelector((state: RootState) => {
         return { numberOfElements: state.cart.numberOfElements, totalPrice: state.cart.totalPrice }
     });
+    const navigation = useNavigation();
+    const orderNow = () => {
+        if (numberOfElements > 0) {
+            navigation.navigate("Map" as never, {
+                restaurantId,
+            } as never)
+        }
+        else Alert.alert("no items", "htere is nothing in your cart to order", [
+            {
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+            },
+            {
+                text: 'OK',
+                onPress: () => console.log('OK Pressed'),
+                style: "default"
+            },
+        ]
+        )
+    }
     return (
         <View style={styles.container}>
             <View style={styles.cartInfoContainer}>
@@ -34,7 +60,7 @@ export default function OrderNowComponent() {
                     </View>
                 </View>
                 <View style={styles.btnWrapper}>
-                    <CustomBtn bgColor={COLORS.primary} txt='Order' txtColor={COLORS.white} onPress={() => { }} width={"100%"} />
+                    <CustomBtn bgColor={COLORS.primary} txt='Order' txtColor={COLORS.white} onPress={orderNow} width={"100%"} />
                 </View>
             </View>
         </View>

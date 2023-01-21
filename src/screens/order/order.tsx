@@ -22,7 +22,7 @@ export default function Order() {
         {/* <SnapItemsCarousel items={getRestaurantById(params.restaurantId)!?.menu} /> */}
         <ItemsCarousel data={getRestaurantById(params.restaurantId)!?.menu} />
       </View>
-      <OrderNowComponent />
+      <OrderNowComponent restaurantId={params.restaurantId} />
     </View>
   )
 }
