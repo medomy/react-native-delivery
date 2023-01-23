@@ -7,6 +7,7 @@ import Order from '../screens/order/order';
 import Map from '../screens/map/map';
 import BottomTabs from './bottomTabs/bottomTabs';
 
+// setup our navigation  
 const StackNavigator = createNativeStackNavigator();
 export default function Navigation() {
   return (

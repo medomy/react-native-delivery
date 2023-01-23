@@ -3,6 +3,8 @@ import React from 'react'
 import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs'
 import { COLORS } from '../../Constants';
 import Svg , {Path} from 'react-native-svg';
+
+// component with custom styles to make the custopm buttonTabBar custom style required
 export default function TabBarCustomBtn({ accessibilityState, children, onPress }: BottomTabBarButtonProps) {
     const isSelected = accessibilityState?.selected;
     if (isSelected) {

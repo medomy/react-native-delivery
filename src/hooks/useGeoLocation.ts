@@ -23,6 +23,7 @@ export function useGeoLocation() {
     let isGranted = false;
     const isLocationPermissioned = async () => {
         try {
+            // get permission for location
             isGranted = await getLocationPermission();
             console.log(isGranted);
             Geolocation.getCurrentPosition((position) => setLocation({
