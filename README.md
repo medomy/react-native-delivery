@@ -17,7 +17,11 @@ then start the app
   npm i
   npm start
 ```
-
+## Walk through
+- first we have Home screen that shows the available categories and restaurants.
+- then we have a detail screen for each restaurant that shows a carousel of menu items that you can choose from.
+- then we have the map screen which will not be shown in the right way unless you provide a google api key.
+  
 ## Tech Stack
 
 **Client:** React-Native, Redux, Typescript
